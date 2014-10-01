@@ -3,12 +3,12 @@ package ch.klandolt.java.quiz.business;
 public class TestQuiz {
 
 	public static void main(String[] args) {
-		
-		//DataSet inizialisieren:
+
+		// DataSet inizialisieren:
 		DataSet meinDatenset = new DataSet();
-		
-		//Quiz Erstellen und zum Datenset laden
-		
+
+		// Quiz Erstellen und zum Datenset laden
+
 		Quiz Quiz1 = new Quiz("Max", 2);
 		meinDatenset.add(Quiz1);
 		Quiz Quiz2 = new Quiz("Johannes", 1);
@@ -29,18 +29,16 @@ public class TestQuiz {
 		meinDatenset.add(Quiz9);
 		Quiz Quiz10 = new Quiz("Elia", 9);
 		meinDatenset.add(Quiz10);
+
+		System.out.println("Durschnitspunkte: " + meinDatenset.getAveragePoint());
+
+		meinDatenset.getMaximumPoint();
+
+		System.out.println("-------------------------------------");
 		
-	
+		System.out.println("Durchschnistlängename: " + meinDatenset.getAverageString());
 		
-		
-		System.out.println("Durschnitspunkte: " + meinDatenset.getAverage());
-		
-		meinDatenset.getMaximum();
-		
-		
-		
-		
-		
+		meinDatenset.getMaximumString();
 
 	}
 

@@ -5,9 +5,13 @@ package ch.klandolt.java.quiz.business;
  */
 public class DataSet {
 	private int sum;
+	private int sumString;
 	private int maximum;
+	private int maximumString;
 	private int count;
 	private IMeasurable maximumkandidat;
+	private IMeasurable maximumKandidatString;
+	
 
 	/**
 	 * Constructs an empty data set.
@@ -27,12 +31,20 @@ public class DataSet {
 	public void add(Quiz kandidat) {
 
 		int x = kandidat.getPunkte();
+		int xString = kandidat.getName().length();
+		
 		// Zur Summe hinzufügen
 		sum = sum + x;
-		// Wenn Grösser als aktuell grösste Zahl
+		sumString = sumString + xString;
+		// Wenn Grösser als aktuell grösste Zahl Punkte
 		if (count == 0 || maximum < x) {
 			maximum = x;
 			maximumkandidat = kandidat;
+		}
+		//Wenn Grösser als aktuell grösste Länge String
+		if (count == 0 || maximumString < xString) {
+			maximumString = xString;
+			maximumKandidatString = kandidat;
 		}
 		//Counter hochzählen
 		count++;
@@ -43,11 +55,23 @@ public class DataSet {
 	 * 
 	 * @return the average or 0 if no data has been added
 	 */
-	public double getAverage() {
+	public double getAveragePoint() {
 		if (count == 0)
 			return 0;
 		else
 			return sum / count;
+	}
+	
+	/**
+	 * Gets the average of the added data.
+	 * 
+	 * @return the average or 0 if no data has been added
+	 */
+	public double getAverageString() {
+		if (count == 0)
+			return 0;
+		else
+			return sumString / count;
 	}
 
 	/**
@@ -55,8 +79,18 @@ public class DataSet {
 	 * 
 	 * @return the maximum or 0 if no data has been added
 	 */
-	public void getMaximum() {
+	public void getMaximumPoint() {
 		System.out.println("Der Gewinner ist: " + maximumkandidat.getName() + " mit " + maximum + "Punkte");
+		
+	}
+	
+	/**
+	 * Gets the largest of the added data.
+	 * 
+	 * @return the maximum or 0 if no data has been added
+	 */
+	public void getMaximumString() {
+		System.out.println("Der Gewinner ist: " + maximumKandidatString.getName() + " mit " + maximumString + "Punkte");
 		
 	}
 }
